@@ -1,0 +1,12 @@
+#start with base image
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+
+#Copy Everything else from directory to container directory (don't really need this if using persistent volumes)
+COPY . .
+
+CMD ["npm", "run", "start"]
